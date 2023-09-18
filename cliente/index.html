@@ -1,0 +1,129 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Mi chat con Node</title>
+    <style>
+        form{
+            background: rgb(0,0,0, .15);
+            padding: 0.25rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+        ul{list-style-type: none; margin: 0; padding: 0;}
+        ul > li{padding: 0.5rem 1rem;}
+        ul > li:nth-child(odd){
+            background: #dcf8c6;
+            text-align: right;
+            font-style: italic;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list-group"></ul>
+    <form action="">
+        <input type="text" class="form-control" placeholder="Ingrese mensaje">
+        <button class="btn btn-primary" >Enviar</button>
+    </form>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        let socket = io()
+        //Elemnetos de  DOM
+        const form = document.querySelector('form')
+        const input = document.querySelector('input')
+        let mensaje = document.querySelector('ul')
+
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            if(input.value){
+                socket.emit('chat', input.value)
+                input.value = ''
+            }
+        })
+        socket.on('chat' , (msg => {
+            let item = document.createElement('li')
+            item.textContent = msg
+            mensajes.appendChild(item)
+            window.scrollTo(0,(document.body.scrollHeight))
+        }))
+    </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Mi chat con Node</title>
+    <style>
+        form{
+            background: rgb(0,0,0, .15);
+            padding: 0.25rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+        ul{list-style-type: none; margin: 0; padding: 0;}
+        ul > li{padding: 0.5rem 1rem;}
+        ul > li:nth-child(odd){
+            background: #dcf8c6;
+            text-align: right;
+            font-style: italic;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list-group"></ul>
+    <form action="">
+        <input type="text" class="form-control" placeholder="Ingrese mensaje">
+        <button class="btn btn-primary" >Enviar</button>
+    </form>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        let socket = io()
+        // Elementos del DOM
+        const form = document.querySelector('form')
+        const input = document.querySelector('input')
+        let mensajes = document.querySelector('ul')
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            if (input.value) {
+                socket.emit('chat', input.value)
+                input.value = ''
+            }
+        })
+        socket.on('chat', (msg) => {
+            let item = document.createElement('li')
+            item.textContent = msg
+            mensajes.appendChild(item)
+            window.scrollTo(0, document.body.scrollHeight)
+        })
+    </script>
+</body>
+</html>
